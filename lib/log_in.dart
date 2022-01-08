@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:prefdemo/services/pref_service.dart';
 import 'package:prefdemo/sign_up.dart';
 
 class LogIn extends StatefulWidget {
   static const String id = "log_in";
-  const LogIn({Key? key}) : super(key: key);
+  const LogIn({Key key}) : super(key: key);
 
   @override
   _LogInState createState() => _LogInState();
@@ -25,6 +26,9 @@ class _LogInState extends State<LogIn> {
                     child: IconButton(
                         icon: Icon(Icons.arrow_back_rounded, size: 35,),
                       onPressed: (){
+                        Prefs.loadUser().then((user) => {
+                          print(user.email),
+                        });
                           Navigator.pushReplacementNamed(context, SignUp.id);
                       },
 
